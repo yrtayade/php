@@ -1,0 +1,14 @@
+.myCard
+{
+    padding: 20px;
+    box-shadow: 0px 0px 30px #cecece;
+    border-radius: 10px;
+    text-align: center;
+}
+.myCard a{
+    text-decoration: none;
+    background-color: blue;
+    padding: 20px 40px;
+    display: inline-block;
+    color: #111;
+}

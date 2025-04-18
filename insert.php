@@ -1,17 +1,27 @@
 <?php
     include("connection.php");
-    if(  isset($_GET["submit"]) )
+
+    if(  isset( $_GET["submit"]  ) )
     {
-        $f_name = $_GET["fname"];
-        $s_email = $_GET["semail"];
-        $s_contact = $_GET["contact"];
-        $myQuery = "INSERT INTO student(fullname,semail,contact) VALUES('kamlesh'','".$s_email."','".$s_contact."')";
-        if( $conn->query( $myQuery) == TRUE)
+        $f_name = trim($_GET["fname"]);
+        $s_email = trim($_GET["semail"]);
+        $s_contact = trim($_GET["contact"]);
+        $s_password = trim($_GET["spassword"]);
+        $gender = trim($_GET["gender"]);
+        $branch = trim($_GET["branch"]);
+
+        $enc_password = password_hash($s_password , PASSWORD_DEFAULT   );
+
+        $myQuery = $conn->prepare("INSERT INTO student(fullname, semail, contact, password, gender,branch) VALUES(?,?,?,?,?,?)");
+
+        $myQuery->bind_param("ssssss",$f_name,$s_email,$s_contact,$enc_password,$gender,$branch);
+
+        if( $myQuery->execute() == TRUE)
         {
             echo "
                 <script type='text/javascript'>
                     alert('Data Inserted');
-                    window.location.href='registration.html';
+                    window.location.href='demoSelect.php';
                 </script>
             ";
         }

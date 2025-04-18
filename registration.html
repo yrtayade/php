@@ -22,9 +22,32 @@
                     Contact: 
                     <input type="text" name="contact" placeholder="Enter contact" class="form-control">
                     <br>
+                    <input type="text" placeholder="Enter Password" name="spassword" class="form-control">
+                    <br>
+
+                    <input type="radio" placeholder="Enter 
+                    Password" name="gender" value="male">Male
+                    <input type="radio" placeholder="Enter Password" name="gender" value="female">Female
+                    <br>
+
+                    <select name="branch">
+                        <option value="21">CSE</option>
+                        <option value="22">IT</option>
+                    </select>
+
                     <input type="submit" class="btn btn-success" name="submit">
                 </form>
             </div>
+            <div class="col-md-6" p-5>
+              <a href="select.php" class="btn btn-primary">View Data</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <form action="selectData.php">
+                <input type="text" name="semail" id="" placeholder="enter email to search">
+                <input type="submit">
+            </form>
         </div>
     </div>
 </body>
