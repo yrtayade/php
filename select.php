@@ -14,11 +14,13 @@
 
 <table class="table table-bordered container mt-5">
     <tr>
+        <th>Photo</th>
         <th>Fullname</th>
         <th>Email</th>
         <th>Contact</th>
         
         <th>View</th>
+        <th>Edit</th>
         <th>Delete</th>
     </tr>
     
@@ -36,15 +38,21 @@
             $se = $row["semail"];
             $cn = $row["contact"];
             $pw = $row["password"];
+            $photo = $row["photo"];
              
             echo "
             <tr>
+               
+                <td> <img src='".$photo."' style='width:200px;'></td>
                 <td>".$fn."</td>
                 <td>".$se."</td>
                 <td>".$cn."</td>
                 
                 <td>
                     <a href='view.php?myVar=$se'>View</a>
+                </td>
+                <td>
+                    <a href='edit.php?myVar=$se'>Edit</a>
                 </td>
                  <td>
                     <a href='delete.php?myVar=$se'>Delete</a>

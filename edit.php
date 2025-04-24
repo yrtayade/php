@@ -1,3 +1,32 @@
+
+    <?php
+       
+        include("connection.php");
+        $email = $_GET["myVar"];
+        
+        $myQuery = "SELECT * FROM student WHERE semail='".$email."'";
+        $result = $conn->query($myQuery);
+        if( $result->num_rows > 0)
+        {
+            while($row = $result->fetch_assoc() )
+            {
+                $fn = $row["fullname"]; 
+                $em = $row["semail"];
+                $cn = $row["contact"];
+                echo '
+                    <tr>
+                        <td>'.$fn.'</td>
+                        <td>'.$em.'</td>
+                        <td>'.$cn.'</td>
+                    </tr>
+                ';
+            }
+        }
+        else
+        {
+            echo "Not found";
+        }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,13 +43,13 @@
     <div class="container">
         <div class="row p-5 bg-warning">
             <div class="col-md-6 p-5">
-                <form action="insert.php" method="POST" enctype="multipart/form-data">
+                <form action="update.php" method="POST" enctype="multipart/form-data">
                     Fullname: 
-                    <input type="text" name="fname" placeholder="Enter name" class="form-control">
+                    <input type="text" name="fname" placeholder="Enter name" class="form-control" value="<?php echo $fn; ?>">
                     Email: 
-                    <input type="email" name="semail" placeholder="Enter email" class="form-control">
+                    <input type="email" name="semail" placeholder="Enter email" class="form-control" value="<?php echo $em; ?>">
                     Contact: 
-                    <input type="text" name="contact" placeholder="Enter contact" class="form-control">
+                    <input type="text" name="contact" placeholder="Enter contact" class="form-control" value="<?php echo $cn; ?>">
                     <br>
                     <input type="text" placeholder="Enter Password" name="spassword" class="form-control">
                     <br>

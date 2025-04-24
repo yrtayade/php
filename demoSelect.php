@@ -28,11 +28,12 @@
                     $se = $row["semail"];
                     $cn = $row["contact"];
                     $pw = $row["password"];
+                    $ph = $row["photo"];
                     
                     echo '
                    <div class="col-md-3 p-3">
                     <div class="myCard">
-                        <img src="avatar.png" class="img-fluid" alt="">
+                        <img src="'.$ph.'" class="img-fluid" alt="">
                         <h3>'.$fn.'</h3>
                         <p>'.$se.'</p>
                         <p>'.$cn.'</p>
